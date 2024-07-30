@@ -1,0 +1,190 @@
+create table ACCOUNT(
+  acc_no varchar2(5),
+  name varchar2(5),
+  city varchar2(5),
+  balance number(10,2),
+  loan_taken varchar2(3)
+);
+
+
+insert into ACCOUNT
+values('A001','Patel Jigar','Mehsana',50000,'YES');
+
+insert into ACCOUNT
+values('A002','Patel Ramesh','Mehsana',50000,'YES');
+
+insert into ACCOUNT
+values('A003','Dave Hardik','Ahmedabad',75000 ,'NO');
+
+insert into ACCOUNT
+values('A004','Soni Hetal','Ahmedabad',100000,'NO');
+
+insert into ACCOUNT
+values('A005','Soni Atul','Vadodara',100000,'YES');
+
+
+
+CREATE TABLE LOAN 
+(
+    LOAN_NO VARCHAR2(5),
+    ACC_NO VARCHAR2(5),
+    LOAN_AMT NUMBER(10,2),
+    INTREST_RATE NUMBER(10,2),
+    LOAN_DATE DATE,
+    REMAING_LOAN NUMBER(10,2)
+);
+
+
+INSERT INTO LOAN 
+VALUES(
+    'L001',
+    'A001',
+    100000,
+    7,
+    '01/01/2004',
+    75000
+);
+
+INSERT INTO LOAN 
+VALUES(
+    'L002',
+    'A002',
+    300000,
+    9,
+    '05/18/2004',
+    150000
+);
+
+
+
+INSERT INTO LOAN 
+VALUES(
+    'L003',
+    'A005',
+    500000,
+    11,
+    '06/15/2004',
+    300000
+);
+
+CREATE TABLE INSTALLMENT 
+(
+    LOAN_NO VARCHAR2(5),
+    INST_NO VARCHAR2(5),
+    INST_DATE DATE,
+    AMOUNT NUMBER(10,2)
+)
+
+INSERT INTO INSTALLMENT 
+VALUES
+(
+    'L001',
+    'I001',
+    '02/02/2004',
+    '15000'
+)
+
+INSERT INTO INSTALLMENT 
+VALUES
+(
+    'L002',
+    'I002',
+    '06/18/2004',
+    20000
+)
+
+
+INSERT INTO INSTALLMENT 
+VALUES
+(
+    'L003',
+    'I003',
+    '07/15/2004',
+    20000
+)
+
+
+CREATE TABLE TRANSACTION
+(
+    ACC_NO VARCHAR2(5),
+    TR_DATE DATE,
+    AMT NUMBER(10,2),
+    TYPE_OF_TR CHAR(1),
+    MODE_OF_PAY VARCHAR2(10)
+)
+
+INSERT INTO TRANSACTION
+VALUES
+(
+    'A001',
+    '05/03.2004',
+    '10000',
+    'D',
+    'CASH'
+)
+
+INSERT INTO TRANSACTION
+VALUES
+(
+    'A002',
+    '07/05/2004',
+    '5000',
+    'W',
+    'CHEQUE'
+)
+
+INSERT INTO TRANSACTION
+VALUES
+(
+    'A003',
+    '08/12/2004',
+    '25000',
+    'D',
+    'CHEQUE'
+)
+
+
+INSERT INTO TRANSACTION
+VALUES
+(
+    'A004',
+    '05/15/2004',
+    '30000',
+    'D',
+    'CHEQUE'
+)
+
+INSERT INTO TRANSACTION
+VALUES
+(
+    'A005',
+    '10/22/2004',
+    '15000',
+    'W',
+    'CASH'
+)
+
+LIST OF QUERIES :	
+			
+	1.Display all rows and all columns of table Transaction.
+
+		SELECT * FROM TRANSACTION ORDER BY ACC_NO;
+
+	2. Display all rows and selected columns of table Installment.
+
+		SELECT LOAN_NO,INST_NO FROM INSTALLMENT ORDER BY LOAN_NO;
+		
+	3. Display selected rows and selected columns of table Account.
+
+		SELECT  ACC_NO , NAME FROM ACCOUNT WHERE BALANCE<75000;
+
+	4. Display selected rows and all columns of table loan
+
+		SELECT  * FROM LOAN WHERE INTREST_RATE>7 ;
+
+	5. Show the structure of the table loan, account and transaction.
+		DESC LOAN;
+
+		DESC ACCOUNT;
+
+		DESC TRANSACTION;
